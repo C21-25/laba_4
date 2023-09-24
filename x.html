@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--створюємо заголовок проекту та задаємо значення для кожного елементу сторінки через style-->
+    <title> Розклад занять </title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .schedule {
+            background-color: #E4F1FF;
+            width: 60%;
+            float: left;
+        }
+
+        .form-container {
+            width: 25%;
+            background-color: #E4F1FF;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            float: right;
+        }
+    </style>
+    <!--Додаємо логотип нашого навчального закладу та вирівнюємо його через center-->
+    <center><img src="https://upload.wikimedia.org/wikipedia/uk/0/0a/MIT_seal.jpg">
+</head>
+<!--задаємо колір фону сторінки-->
+<body bgcolor="27005D">
+    <!--створюємо тег таблиці нашого розкладу та заголовок для нього, додаючи необхідні стильові атрибути-->
+    <h1 style="color: lime;">Розклад занять X-520</h1>
+
+    <div class="container">
+        <table border="2 solid black" class="schedule" cellspacing="0"><center>
+            <th>Час заняття</th>
+    <th>Понеділок</th>
+    <th>Вівторок</th>
+    <th>Середа</th>
+    <th>Четвер</th>
+    <th>П'ятниця</th>
+  </tr> 
+  <tr>
+    <td>8:30-10:05</td>
+    <td>Астрономія</td>
+    <td>Теорія великого вибуху</td>
+    <td>Симуляція польоту</td>
+    <td>Фізичне виховання</td>
+    <td>Астрофізика</td>
+  </tr>
+  <tr>
+   <td>10:25-12:00</td>
+   <td>Фізика</td>
+   <td>Медицина</td>
+   <td>Психологія та міжособистісні навички</td>
+   <td>Біологія</td>
+   <td>Космічна історія</td>
+  </tr> 
+  <tr>
+    <td>12:10-13:55</td>
+    <td>Географія та геологія</td>
+    <td>Симуляція польоту</td>
+    <td>Космічна технологія та інженерія</td>
+    <td>Фізика</td>
+    <td>Медицина</td>
+  </tr>
+  <tr>
+    <td>16:10-17:45</td>
+    <td>Космічна технологія та інженерія</td>
+    <td>Психологія та міжособистісні навички</td>
+    <td>Теорія великого вибуху</td>
+    <td>Астрономія</td>
+    <td>Географія та геологія</td>
+  </tr>
+        </table>
+        <!--додаємо форму реєстрації та розміщуємо її по правому краю сторінки-->
+        <div class="form-container">
+            <h2>Форма для введення особистої інформації</h2>
+            <form id="registrationForm" action="/submit" method="post" target="_blank">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="surname">Прізвище:</label>
+                <input type="text" id="surname" name="surname" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <label for="confirmPassword">Підтвердіть пароль:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+
+                <span id="passwordError" style="color: red;"></span><br><br>
+
+                <input type="submit" value="Зареєструватися">
+            </form>
+        </div>
+    </div>
+    <!--також не забуваємо про перевірку підтвердження паролю у разі невідповідності в полях-->
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                e.preventDefault(); // Забороняємо відправку форми
+                document.getElementById('passwordError').innerText = 'Паролі не співпадають';
+            } else {
+                document.getElementById('passwordError').innerText = ''; // Видаляємо повідомлення про помилку
+            }
+        });
+    </script>
+
+</body>
+
+</html>
